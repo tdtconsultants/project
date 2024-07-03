@@ -152,7 +152,10 @@ class ProjectTask(models.Model):
         return {"name": "Task-ID: %s" % self.id}
 
     def action_confirm(self):
-        self.mapped("move_ids")._action_confirm()
+        self.move_ids._check_company()
+        self.move_ids._adjust_procure_method()
+        self.move_ids._action_confirm()
+        self.move_ids._trigger_scheduler()
 
     def action_assign(self):
         self.action_confirm()
