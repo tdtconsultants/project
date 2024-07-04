@@ -5,6 +5,9 @@
         <field name="model">project.task</field>
         <field name="inherit_id" ref="project.view_task_form2" />
         <field name="arch" type="xml">
+            <div class="oe_button_box" name="button_box" position="inside">
+                <button name="view_pickings" string="Transfers" type="object" class="oe_stat_button" icon="fa-truck" invisible="group_id == False" groups="stock.group_stock_user"/>
+            </div>
             <xpath expr="///button[@name='action_open_parent_task']" position="after">
                 <button
                     name="%(action_project_task_moves)d"
@@ -108,6 +111,7 @@
                     invisible="not use_stock_moves"
                     groups="stock.group_stock_user"
                 >
+                    <field name="group_id" invisible="True" readonly="False"/>
                     <field name="done_stock_moves" invisible="1" />
                     <field name="stock_moves_is_locked" invisible="1" />
                     <field name="stock_state" invisible="1" />

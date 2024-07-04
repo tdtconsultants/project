@@ -229,6 +229,15 @@ class ProjectTask(models.Model):
         # related to hr_timesheet addon
         return super(ProjectTask, self.sudo()).unlink()
 
+    def view_pickings(self):
+        self.ensure_one()
+
+        if self.group_id:
+            action = self.env.ref('stock.do_view_pickings').read()[0]
+            action['domain'] = [('group_id', '=', self.group_id.id)]
+            return action
+        else:
+            raise UserError(_("No pickings found for this task."))
 
 class ProjectTaskType(models.Model):
     _inherit = "project.task.type"

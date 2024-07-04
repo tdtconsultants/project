@@ -27,7 +27,7 @@
                 <field name="sequence" column_invisible="True" />
                 <field name="name" column_invisible="True" />
                 <field name="product_id" required="True" />
-                <field name="group_id" invisible="True"/>
+                <field name="group_id" readonly="False" optional="hide" />
                 <field
                     name="location_id"
                     optional="hide"
