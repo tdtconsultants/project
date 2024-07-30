@@ -149,7 +149,7 @@ class ProjectTask(models.Model):
 
     @api.model
     def _prepare_procurement_group_vals(self):
-        return {"name": "Task-ID: %s" % self.id}
+        return {"name": "%s - %s" % (self.name, self.id)}
 
     def action_confirm(self):
         self.move_ids._check_company()
